@@ -1,0 +1,1166 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asare Andrew - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* ===== Root Variables ===== */
+    :root {
+      --primary-color: #00A2E8;
+      --secondary-color: #000000;
+      --tertiary-color: #FFFFFF;
+      --text-color: #333333;
+      --light-bg: #F5F5F5;
+      --border-radius: 10px;
+      --transition: all 0.3s ease;
+    }
+
+    /* ===== Universal Styles ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--tertiary-color);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ===== Navigation Bar ===== */
+    .navbar {
+      background-color: var(--secondary-color);
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nav-logo a {
+      color: var(--tertiary-color);
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .nav-logo a:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--tertiary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--tertiary-color);
+      margin: 5px 0;
+      transition: var(--transition);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(10px, 10px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+      padding: 150px 0 100px;
+      margin-top: 60px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: var(--tertiary-color);
+      line-height: 1.2;
+    }
+
+    .hero-text h1 .highlight {
+      color: var(--primary-color);
+    }
+
+    .hero-text .subtitle {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .hero-text .description {
+      font-size: 1.1rem;
+      color: var(--tertiary-color);
+      margin-bottom: 2rem;
+    }
+
+    .hero-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: var(--tertiary-color);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--tertiary-color);
+      color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 162, 232, 0.3);
+    }
+
+    /* ===== Section Header ===== */
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .section-header h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background-color: var(--primary-color);
+      margin: 1rem auto 0;
+    }
+
+    .section-subtitle {
+      color: var(--text-color);
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    /* ===== About Section ===== */
+    .about {
+      padding: 80px 0;
+      background-color: var(--tertiary-color);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      font-size: 2rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill-item {
+      background-color: var(--light-bg);
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--primary-color);
+      transition: var(--transition);
+    }
+
+    .skill-item:hover {
+      background-color: var(--primary-color);
+      color: var(--tertiary-color);
+    }
+
+    .skill-name {
+      font-weight: 600;
+    }
+
+    .about-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: var(--border-radius);
+    }
+
+    .about-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 40px rgba(0, 162, 232, 0.2);
+      transition: var(--transition);
+    }
+
+    .about-image img:hover {
+      transform: scale(1.05);
+    }
+
+    /* ===== Portfolio Section ===== */
+    .portfolio {
+      padding: 80px 0;
+      background-color: var(--light-bg);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .portfolio-card {
+      background-color: var(--tertiary-color);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 162, 232, 0.2);
+    }
+
+    .portfolio-image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .portfolio-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .portfolio-card:hover .portfolio-image img {
+      transform: scale(1.1);
+    }
+
+    .portfolio-info {
+      padding: 1.5rem;
+    }
+
+    .portfolio-info h3 {
+      font-size: 1.3rem;
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .portfolio-info p {
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      display: inline-block;
+      background-color: var(--light-bg);
+      color: var(--primary-color);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* ===== Achievements Section ===== */
+    .achievements {
+      padding: 80px 0;
+      background-color: var(--tertiary-color);
+    }
+
+    .achievements-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .achievement-item {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--light-bg);
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+
+    .achievement-item:hover {
+      background-color: var(--primary-color);
+      color: var(--tertiary-color);
+    }
+
+    .achievement-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .achievement-item:hover .achievement-icon {
+      color: var(--tertiary-color);
+    }
+
+    .achievement-item h3 {
+      font-size: 1.3rem;
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .achievement-item:hover h3 {
+      color: var(--tertiary-color);
+    }
+
+    .achievement-item p {
+      color: var(--text-color);
+      font-size: 0.95rem;
+    }
+
+    .achievement-item:hover p {
+      color: var(--tertiary-color);
+    }
+
+    .award-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      background-color: var(--light-bg);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      border-left: 5px solid var(--primary-color);
+    }
+
+    .award-text h3 {
+      font-size: 1.8rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+
+    .award-text p {
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .certificate-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .certificate-list li {
+      color: var(--text-color);
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .certificate-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    .award-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .award-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 40px rgba(0, 162, 232, 0.2);
+    }
+
+    /* ===== Contact Section ===== */
+    .contact {
+      padding: 80px 0;
+      background-color: var(--light-bg);
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-form {
+      background-color: var(--tertiary-color);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--secondary-color);
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid var(--light-bg);
+      border-radius: var(--border-radius);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      background-color: #fafafa;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .info-item {
+      background-color: var(--tertiary-color);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .info-item h4 {
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .info-item p {
+      color: var(--text-color);
+    }
+
+    .info-item a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .info-item a:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: var(--tertiary-color);
+      text-decoration: none;
+      border-radius: 50%;
+      transition: var(--transition);
+      font-size: 1.2rem;
+    }
+
+    .social-link:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-5px);
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background-color: var(--secondary-color);
+      color: var(--tertiary-color);
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .footer p {
+      margin-bottom: 0.5rem;
+    }
+
+    .heart {
+      color: #ff6b6b;
+      font-size: 1.2rem;
+    }
+
+    /* ===== Responsive Design ===== */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--secondary-color);
+        flex-direction: column;
+        padding: 1rem 0;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .nav-menu li {
+        padding: 0.5rem 1rem;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-text .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .achievement-item {
+        padding: 1.5rem;
+      }
+
+      .award-showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .skills {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-logo a {
+        font-size: 1.2rem;
+      }
+
+      .hero-text h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero-text .subtitle {
+        font-size: 1rem;
+      }
+
+      .hero {
+        padding: 120px 0 50px;
+      }
+
+      .section-header h2 {
+        font-size: 1.5rem;
+      }
+
+      .about-text h3 {
+        font-size: 1.3rem;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form {
+        padding: 1.5rem;
+      }
+
+      .info-item {
+        padding: 1rem;
+      }
+
+      .social-links {
+        flex-wrap: wrap;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+
+      .award-showcase {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="#home">Asare Andrew</a>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#about" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="#portfolio" class="nav-link">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a href="#achievements" class="nav-link">Achievements</a>
+        </li>
+        <li class="nav-item">
+          <a href="#contact" class="nav-link">Contact</a>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Image 10 (header image) -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Hi, I'm <span class="highlight">Asare Andrew</span></h1>
+          <p class="subtitle">Software Engineer | Creative Thinker | Visionary</p>
+          <p class="description">Turning ideas into impactful solutions</p>
+          <a href="#contact" class="btn btn-primary">Get In Touch</a>
+        </div>
+        <div class="hero-image">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23000'/%3E%3Cpath d='M 80 150 Q 200 80 320 150 Q 200 220 80 150' fill='none' stroke='%23fff' stroke-width='15' stroke-linecap='round'/%3E%3Cpath d='M 100 100 L 130 80 L 100 60' fill='%23fff'/%3E%3Cpath d='M 300 100 L 270 80 L 300 60' fill='%23fff'/%3E%3C/svg%3E" alt="Decorative Header">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section with Image 9 (profile image) -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-header">
+        <h2>About Me</h2>
+        <p class="section-subtitle">Get to know more about who I am</p>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Passionate Developer & Problem Solver</h3>
+          <p>
+            Hello! I'm Asare Andrew, a dedicated software engineer with a passion for creating innovative digital solutions. 
+            With expertise in full-stack development, I transform complex ideas into elegant, responsive applications that make 
+            a real impact. I believe in continuous learning and staying updated with the latest technologies.
+          </p>
+          <p>
+            When I'm not coding, you can find me contributing to open-source projects, mentoring aspiring developers, or exploring 
+            new technologies that push the boundaries of what's possible in the digital world.
+          </p>
+          <div class="skills">
+            <div class="skill-item">
+              <span class="skill-name">Web Development</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">React & Vue.js</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Full Stack Development</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">UI/UX Design</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="image/WhatsApp Image 2026-02-06 at 6.39.26 PM.jpeg" alt="Asare Andrew Profile">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <h2>My Work</h2>
+        <p class="section-subtitle">Showcasing my recent projects and accomplishments</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <img src="image/SPYDERS.pngSD.png?w=400&h=300&fit=crop" alt="E-Commerce Platform">
+          </div>
+          <div class="portfolio-info">
+            <h3>E-Commerce Platform</h3>
+            <p>A fully responsive e-commerce solution with payment integration and inventory management.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">MongoDB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="Task Management App">
+          </div>
+          <div class="portfolio-info">
+            <h3>Task Management App</h3>
+            <p>A collaborative task management application with real-time updates and team features.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Vue.js</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">CSS3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Social Media Dashboard">
+          </div>
+          <div class="portfolio-info">
+            <h3>Social Media Dashboard</h3>
+            <p>An analytics dashboard for managing multiple social media accounts with real-time insights.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">API Integration</span>
+              <span class="tech-tag">Chart.js</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <img src="image/Screenshot 2025-07-25 104805.png?w=400&h=300&fit=crop" alt="Learning Platform">
+          </div>
+          <div class="portfolio-info">
+            <h3>Learning Platform</h3>
+            <p>An interactive online learning platform with video courses, quizzes, and progress tracking.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Stripe</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop" alt="Weather App">
+          </div>
+          <div class="portfolio-info">
+            <h3>Weather App</h3>
+            <p>A modern weather application with location-based forecasts and detailed meteorological data.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">Weather API</span>
+              <span class="tech-tag">Geolocation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <img src="image/Screenshot 2026-02-06 192059.png?w=400&h=300&fit=crop" alt="Portfolio Website">
+          </div>
+          <div class="portfolio-info">
+            <h3>Portfolio Website</h3>
+            <p>A modern, responsive portfolio showcasing design skills and development expertise.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="achievements">
+    <div class="container">
+      <div class="section-header">
+        <h2>Recognitions & Achievements</h2>
+        <p class="section-subtitle">Awards and certifications I'm proud of</p>
+      </div>
+      <div class="achievements-content">
+        <div class="achievement-item">
+          <div class="achievement-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <h3>Best Developer Award 2025</h3>
+          <p>Recognized for outstanding contribution to web development and innovative solutions in the tech community.</p>
+        </div>
+
+        <div class="achievement-item">
+          <div class="achievement-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>Full Stack Developer Certification</h3>
+          <p>Completed comprehensive training in modern web development technologies and best practices.</p>
+        </div>
+
+        <div class="achievement-item">
+          <div class="achievement-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Open Source Contributor</h3>
+          <p>Active contributor to multiple open-source projects with significant commits and community impact.</p>
+        </div>
+
+        <div class="achievement-item">
+          <div class="achievement-icon">
+            <i class="fas fa-medal"></i>
+          </div>
+          <h3>Tech Innovation Recognition</h3>
+          <p>Awarded for implementing cutting-edge technologies and innovative approaches in software development.</p>
+        </div>
+      </div>
+
+      <div class="award-showcase">
+        <div class="award-text">
+          <h3>Certified Professional Developer</h3>
+          <p>
+            I have earned multiple certifications demonstrating my expertise in modern web technologies, 
+            agile methodologies, and software architecture. These credentials validate my commitment to 
+            professional excellence and continuous improvement.
+          </p>
+          <ul class="certificate-list">
+            <li>Google Cloud Professional Developer</li>
+            <li>AWS Certified Solutions Architect</li>
+            <li>Microsoft Azure Developer</li>
+            <li>Full Stack Developer Bootcamp Graduate</li>
+          </ul>
+        </div>
+        <div class="award-image">
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2>Let's Work Together!</h2>
+        <p class="section-subtitle">I'd love to hear from you. Let's create something amazing.</p>
+      </div>
+      <div class="contact-content">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Project Subject" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h4>Email</h4>
+            <p><a href="mailto:verifiedloner218@.com">veriifiedloner218@.com</a></p>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <h4>Phone</h4>
+            <p><a href="tel:+1234567890">+233 2013-21499</a></p>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h4>Location</h4>
+            <p>Koforidua, Ghana</p>
+          </div>
+
+          <div class="social-links">
+            <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Asare Andrew. All rights reserved.</p>
+      <p>Designed & Built with <span class="heart">❤</span> by Asare Andrew</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+    }
+
+    // Smooth Scroll Navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          navMenu.classList.remove('active');
+          if (hamburger) {
+            hamburger.classList.remove('active');
+          }
+        }
+      });
+    });
+
+    // Form Submission Handler
+    function handleSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      alert(`Thank you ${name}! Your message has been sent successfully. I will get back to you at ${email} soon.`);
+      document.querySelector('.contact-form').reset();
+    }
+
+    // Scroll Animation for Elements
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Apply animation to portfolio cards and achievement items
+    document.querySelectorAll('.portfolio-card, .achievement-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+      } else {
+        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+      }
+    });
+  </script>
+</body>
+</html>
